@@ -1,74 +1,77 @@
 # LeadFlow CRM 🚀
 
-A professional, full-stack Lead Management System (CRM) designed for teams to track, manage, and convert potential customers. Built with the MERN stack, this application features a sleek, responsive "Fresh Light" UI and robust security measures.
+A professional, full-stack Lead Management System (CRM) designed for teams to track, manage, and convert potential customers. Built with the MERN stack, this application features a sleek, responsive **"Fresh Light" UI** and robust security measures.
 
 ---
 
 ## 🌐 Live Deployment
 
-- **Frontend:** https://lead-flow-crm-opal.vercel.app/
-- **Backend API:** https://leadflow-crm-rzi4.onrender.com/api/health
+- **Frontend:** https://lead-flow-crm-opal.vercel.app/  
+- **Backend API:** https://leadflow-crm-rzi4.onrender.com/api/health  
+
+> ⚠️ **Note on Performance:**  
+> The backend is hosted on a **Render free instance**. If the application has been inactive, the initial request may take ~30 seconds to "wake up" the server. Once active, performance is near-instant.
 
 ---
 
 ## 🌟 Key Features
 
 ### 📋 Lead Management (CRUD)
-- **Create:** Add new leads with validation for unique phone numbers.
-- **View:** A comprehensive dashboard to browse all leads at a glance.
-- **Update:** Real-time status management (New, Follow Up, Closed) directly from the details page.
-- **Delete:** Permanent removal of lead records via a secure "Danger Zone."
-- **Notes Timeline:** Add and view interaction history for every lead in reverse-chronological order.
+- **Create:** Add new leads with validation for unique phone numbers  
+- **View:** A comprehensive dashboard to browse all leads  
+- **Update:** Real-time status management (New, Follow Up, Closed)  
+- **Delete:** Permanent removal via a secure "Danger Zone"  
+- **Notes Timeline:** Track interaction history in reverse-chronological order  
 
 ### 🔐 Security & Authentication
-- **User Auth:** Secure Registration and Login system using **JWT (JSON Web Tokens)** and password hashing.
-- **Automation API:** Specialized endpoints protected by a static `x-api-key` for external lead ingestion (e.g., from website forms).
-- **Validations:** Strict regex-based phone validation and 6-character minimum password enforcement.
+- **User Authentication:** JWT-based login & registration with password hashing  
+- **Automation API:** Protected endpoints using static `x-api-key`  
+- **Validations:** Regex-based phone validation & minimum password length  
 
 ### 🎨 Modern UI/UX
-- **Fresh Light Theme:** A modern, indigo-accented interface with layered depth (cards on tinted backgrounds).
-- **Responsive Design:** Fully optimized for Mobile, Tablet, and Desktop with a custom Hamburger menu for smaller screens.
-- **Search & Filter:** Instant lead filtering by name, phone number, source, or current status.
-- **CSV Export:** One-click export of all leads to a `.csv` file for external reporting.
+- **Fresh Light Theme:** Clean, indigo-accented modern UI  
+- **Responsive Design:** Works seamlessly on mobile, tablet, and desktop  
+- **Search & Filter:** Instant filtering by name, phone, source, or status  
+- **CSV Export:** Export leads with one click  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React.js, Vite, React Router, Axios, CSS3 (Custom Variables)
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB (via Mongoose)
-- **Security:** JWT, Bcrypt, API Key Middleware
+- **Frontend:** React.js, Vite, React Router, Axios, CSS3  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB (Mongoose)  
+- **Security:** JWT, Bcrypt, API Key Middleware  
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js installed
-- MongoDB (Local or Atlas)
+- Node.js installed  
+- MongoDB (Local or Atlas)  
 
 ---
 
-## Installation
+## ⚙️ Installation
 
 ### 1. Clone the repository
 
 ```bash
 git clone https://github.com/harshtadas8/LeadFlow_CRM.git
-cd leadflow-crm
+cd LeadFlow_CRM
 ```
 
 ---
 
-## Backend Setup
+## 🔧 Backend Setup
 
 ```bash
 cd backend
 npm install
 ```
 
-Create a `.env` file inside the **backend** folder:
+Create a `.env` file in the **backend** folder:
 
 ```
 PORT=5000
@@ -85,7 +88,7 @@ npm run dev
 
 ---
 
-## Frontend Setup
+## 💻 Frontend Setup
 
 ```bash
 cd ../frontend
@@ -102,22 +105,21 @@ npm run dev
 
 ## 📡 API Endpoints Summary
 
-### Authentication
-- `POST /api/auth/register` — Create a new team account  
-- `POST /api/auth/login` — Authenticate and receive a JWT  
+### 🔐 Authentication
+- `POST /api/auth/register` — Register a new user  
+- `POST /api/auth/login` — Login and receive JWT  
 
-### Leads
-- `GET /api/leads` — Fetch all leads (Protected: JWT)  
-- `GET /api/leads/:id` — Fetch lead details + notes (Protected: JWT)  
-- `POST /api/leads` — Create a lead (Protected: API Key)  
-- `PUT /api/leads/:id` — Update lead info/status (Protected: JWT)  
-- `DELETE /api/leads/:id` — Remove a lead (Protected: JWT)  
+### 📋 Leads
+- `GET /api/leads` — Get all leads *(JWT required)*  
+- `GET /api/leads/:id` — Get lead details *(JWT required)*  
+- `POST /api/leads` — Create lead *(API Key required)*  
+- `PUT /api/leads/:id` — Update lead *(JWT required)*  
+- `DELETE /api/leads/:id` — Delete lead *(JWT required)*  
 
-### Notes
-- `POST /api/leads/:id/notes` — Add interaction note (Protected: API Key)
+### 📝 Notes
+- `POST /api/leads/:id/notes` — Add note *(API Key required)*  
 
 ---
-
 
 ## 👨‍💻 Author
 
