@@ -23,8 +23,8 @@ const CreateLead = () => {
   };
 
   /**
-   * Submits lead data to the backend with API key authorization.
-   * Handles duplicate entry conflicts by redirecting to the existing record.
+   * Submits lead data to the backend.
+   * Captures specific validation errors from the server response.
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,13 +36,16 @@ const CreateLead = () => {
       });
       navigate(`/leads/${response.data._id}`);
     } catch (err) {
+      // PRO TIP: Extract the specific message sent by leadController.js
+      const serverErrorMessage = err.response?.data?.message;
+
       if (err.response?.status === 409) {
-        alert(
-          "This phone number already exists! Redirecting to existing lead.",
-        );
+        // Handle your specific redirect logic for duplicates
+        alert(serverErrorMessage || "Lead already exists! Redirecting...");
         navigate(`/leads/${err.response.data.leadId}`);
       } else {
-        setError(err.response?.data?.message || "Failed to create lead");
+        // Display the exact validation error from the server (Production style)
+        setError(serverErrorMessage || "Failed to create lead. Please check your inputs.");
       }
     } finally {
       setLoading(false);
@@ -76,9 +79,10 @@ const CreateLead = () => {
             marginBottom: "20px",
             fontSize: "13px",
             border: "1px solid rgba(239, 68, 68, 0.2)",
+            textAlign: "left" 
           }}
         >
-          {error}
+          <strong>Validation Error:</strong> {error}
         </div>
       )}
 
@@ -129,8 +133,7 @@ const CreateLead = () => {
               value={formData.phone}
               onChange={handleChange}
               required
-              pattern="[0-9+]*"
-              title="Please enter a valid phone number (digits only)"
+              style={{ fontSize: "14px" }}
             />
           </div>
 
